@@ -16,15 +16,16 @@ repositories {
 }
 
 dependencies {
-	// web
+    // web
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-	// template
+    // template
     implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
     // DB
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'com.h2database:h2'
 
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

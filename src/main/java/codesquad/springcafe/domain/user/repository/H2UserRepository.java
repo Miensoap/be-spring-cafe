@@ -18,8 +18,8 @@ import java.util.List;
 public class H2UserRepository implements UserRepository {
     private final String FIND_ALL_USER = "SELECT * FROM USERS";
     private final String FIND_BY_ID_USER = "SELECT * FROM USERS WHERE UserId = ?";
-    private final String UPDATE_USER = "UPDATE Users SET name = ?, email = ?, password = ? WHERE userId = ?;";
-    private final String ADD_USER = "INSERT INTO Users (userId, password, name, email) VALUES (?, ?, ?, ?);";
+    private final String UPDATE_USER = "UPDATE USERS SET name = ?, email = ?, password = ? WHERE userId = ?;";
+    private final String ADD_USER = "INSERT INTO USERS (userId, password, name, email) VALUES (?, ?, ?, ?);";
 
     private final JdbcTemplate jdbcTemplate;
 
