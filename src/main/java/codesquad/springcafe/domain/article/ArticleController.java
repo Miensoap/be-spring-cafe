@@ -63,7 +63,7 @@ public class ArticleController {
 
         model.addAttribute("article", article.article());
         model.addAttribute("comments", article.comments());
-        model.addAttribute("numberOfComments", article.comments().size());
+        model.addAttribute("numberOfComments", articleService.getNumberOfComments(id));
         return "article/show";
     }
 

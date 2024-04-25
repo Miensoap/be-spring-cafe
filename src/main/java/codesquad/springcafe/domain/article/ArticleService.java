@@ -76,4 +76,8 @@ public class ArticleService {
 
         return true;
     }
+
+    public int getNumberOfComments(int id){
+        return commentService.findByArticleId(id).size();
+    }
 }
