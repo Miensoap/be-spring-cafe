@@ -82,4 +82,9 @@ public class MemoryArticleRepository implements ArticleRepository {
         List<Article> all = findAll();
         return all.subList(START_INDEX, Math.min(LAST_INDEX, all.size()));
     }
+
+    @Override
+    public List<Article> findWithQuery(String queryString) {
+        return findAll();
+    }
 }

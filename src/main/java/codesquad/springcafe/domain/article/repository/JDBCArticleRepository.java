@@ -119,6 +119,16 @@ public class JDBCArticleRepository implements ArticleRepository {
         return jdbcTemplate.query(paging_query, args, pramTypes, articleRowMapper());
     }
 
+    @Override
+    public List<Article> findWithQuery(String queryString) {
+        String FIND_ALL = "SELECT * FROM ARTICLE WHERE STATUS = ?";
+        String ORDER = " ORDER BY CREATEDAT DESC;";
+
+        Object[] args = new Object[]{OPEN};
+        int[] pramTypes = new int[]{VARCHAR};
+        return jdbcTemplate.query(FIND_ALL + queryString + ORDER, args, pramTypes, articleRowMapper());
+    }
+
     private RowMapper<Article> articleRowMapper() {
         return (resultSet, rowNum) -> new Article(
                 resultSet.getInt(ID),

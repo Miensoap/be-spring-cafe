@@ -5,13 +5,13 @@ import codesquad.springcafe.domain.article.DTO.ArticleWithComments;
 import codesquad.springcafe.domain.article.repository.ArticleRepository;
 import codesquad.springcafe.domain.comment.CommentService;
 import codesquad.springcafe.domain.comment.DTO.Comment;
-import codesquad.springcafe.domain.comment.repository.CommentRepository;
 import codesquad.springcafe.domain.user.DTO.SimpleUserInfo;
 import codesquad.springcafe.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ArticleService {
@@ -79,5 +79,15 @@ public class ArticleService {
 
     public int getNumberOfComments(int id){
         return commentService.findByArticleId(id).size();
+    }
+
+    public List<Article> findWithQuery(Map<String, String> query) {
+        StringBuilder sb = new StringBuilder();
+        for(String key : query.keySet()){
+            if(query.get(key).equals("*")) continue;
+            sb.append(" AND " + key + " LIKE CONCAT( '%', '" + query.get(key) + "', '%')");
+        }
+
+        return articleRepository.findWithQuery(sb.toString());
     }
 }

@@ -20,4 +20,6 @@ public interface ArticleRepository {
     void deleteAll();
 
     List<Article> getArticles(int page);
+
+    List<Article> findWithQuery(String queryString);
 }
